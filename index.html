@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cara Cabinets — Custom renovations, made accessible. Premium quality cabinets at transparent pricing. Proudly Canadian." />
+  <title>CARA — Custom Renovations, Made Accessible</title>
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+</head>
+<body>
+
+  <!-- Announcement Banner -->
+  <div class="announcement-banner">
+    <span><img src="/images/gold-leaf.png" alt="" style="height:16px;width:auto;vertical-align:middle;margin-right:4px;"> PROUDLY CANADIAN - FOUNDER OWNED &amp; OPERATED</span>
+    <div class="divider"></div>
+    <span class="financing-text">FINANCING AS LOW AS 0% APR</span>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="header-logo">
+          <img src="/images/cara-logo-new.png" alt="Cara" class="header-logo-icon" />
+        </a>
+        <span class="header-brand">Cara Group</span>
+      </div>
+      <nav class="header-nav" id="main-nav">
+        <a href="/shop.html">Shop</a>
+        <a href="/finishes.html">Finishes</a>
+        <a href="#">Support</a>
+        <a href="#inspiration">Inspiration</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="icon-btn" id="account-btn" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="icon-btn" id="cart-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </button>
+        <a href="#" class="btn-primary" id="get-started-btn">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slideshow Hero -->
+  <section class="slideshow-hero" id="slideshow-hero">
+    <img src="/images/slideshow/slide-1.jpg" alt="Cara kitchen showcase 1" class="slideshow-slide active" />
+    <img src="/images/slideshow/slide-2.jpg" alt="Cara kitchen showcase 2" class="slideshow-slide" />
+    <img src="/images/slideshow/slide-3.jpg" alt="Cara kitchen showcase 3" class="slideshow-slide" />
+
+    <div class="slideshow-panels">
+      <div class="panel-group panel-group--right">
+        <div class="glass-panel-icon-wrap"><svg class="glass-panel-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+        <a href="/categories.html" class="glass-panel glass-panel--right" id="glass-panel-right">
+          <h2>Go to Our Online Shop</h2>
+          <span class="glass-panel-btn">Click Here</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero + Why Choose Cara (scroll-merged) -->
+  <div class="hero-wrapper" id="hero-wrapper">
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <video class="hero-video active" id="hero-video-a" muted playsinline autoplay>
+          <source src="/videos/hero-1.mp4" type="video/mp4">
+        </video>
+        <video class="hero-video" id="hero-video-b" muted playsinline preload="none"></video>
+      </div>
+      <!-- Grayscale overlay: fades in to make video appear B&W (much cheaper than per-frame filter) -->
+      <div class="hero-grayscale-overlay" id="hero-grayscale-overlay"></div>
+      <div class="hero-content" id="hero-content">
+        <h1>Custom renovations,<br>made accessible</h1>
+        <p>Premium kitchens, bathrooms, and living spaces — designed and delivered to your door. Transparent pricing, no contractor markups.</p>
+      </div>
+
+      <!-- Why Choose Cara overlay (slides up on scroll) -->
+      <div class="comparison-overlay" id="comparison-overlay">
+        <div class="comparison-overlay-inner">
+          <div class="section-header">
+            <h2>Why choose Cara?</h2>
+            <p>We're rethinking how custom renovations should be — accessible, transparent, and built to last.</p>
+          </div>
+          <div class="comparison-grid">
+            <div class="comparison-card">
+              <div class="card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <h3>Better Value</h3>
+              <p>By cutting out the middleman, we deliver premium cabinetry at a fraction of traditional costs. No showroom overhead, no inflated margins.</p>
+            </div>
+            <div class="comparison-card">
+              <div class="card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <h3>Convenience</h3>
+              <p>Design and order entirely online. Factory-assembled cabinets arrive ready to install. Skip the weeks of waiting and complicated in-store appointments.</p>
+            </div>
+            <div class="comparison-card">
+              <div class="card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h3>Transparency</h3>
+              <p>See real pricing upfront — no hidden fees, no surprise quotes. What you see is what you pay. We believe in honest, straightforward business.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Quality Section — Scroll-Activated -->
+  <section class="quality-scroll" id="quality">
+    <div class="quality-sticky">
+      <!-- Left: Image Panel -->
+      <div class="quality-image-panel">
+        <img src="/images/quality-1.jpg" alt="Engineered panels detail" class="quality-slide-img active" data-step="0" />
+        <img src="/images/quality-2.jpg" alt="Glue-and-dowel joinery" class="quality-slide-img" data-step="1" />
+        <img src="/images/quality-3.jpg" alt="Blum hardware close-up" class="quality-slide-img" data-step="2" />
+        <img src="/images/quality-4.jpg" alt="Factory assembled cabinet" class="quality-slide-img" data-step="3" />
+      </div>
+      <!-- Right: Text Panel -->
+      <div class="quality-text-panel">
+        <div class="quality-step active" data-step="0">
+          <h2>Built to last</h2>
+          <h3>¾" Engineered Panels</h3>
+          <p>Thick, durable construction that stands up to decades of daily use. Every panel is precision-cut for a flawless fit.</p>
+        </div>
+        <div class="quality-step" data-step="1">
+          <h2>Built to last</h2>
+          <h3>Glue-and-Dowel Joinery</h3>
+          <p>Superior joint strength compared to stapled or cam-lock construction. Our joinery technique ensures structural integrity for decades.</p>
+        </div>
+        <div class="quality-step" data-step="2">
+          <h2>Built to last</h2>
+          <h3>Premium Blum® Hardware</h3>
+          <p>Soft-close hinges and drawer slides from the world's leading hardware manufacturer. Smooth, silent, and built to last a lifetime.</p>
+        </div>
+        <div class="quality-step" data-step="3">
+          <h2>Built to last</h2>
+          <h3>Factory Assembled</h3>
+          <p>Arrives fully assembled — no flat-pack frustration. Ready for professional or DIY installation, right out of the box.</p>
+        </div>
+        <!-- Progress dots -->
+        <div class="quality-dots">
+          <span class="quality-dot active" data-step="0"></span>
+          <span class="quality-dot" data-step="1"></span>
+          <span class="quality-dot" data-step="2"></span>
+          <span class="quality-dot" data-step="3"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Story Section -->
+  <div class="story-scroll" id="story-scroll">
+    <section class="section story" id="story">
+      <div class="story-inner">
+        <span class="story-eyebrow">EST. 2025</span>
+        <h2 class="story-headline">Infinite<br>Creation</h2>
+        <div class="story-grid">
+          <div class="story-img"><img src="/images/story/story-1.jpg" alt="Craftsmanship detail" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-2.jpg" alt="Workshop process" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-3.jpg" alt="Cabinet finishing" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-4.jpg" alt="Material selection" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-5.jpg" alt="Assembly line" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-6.jpg" alt="Quality inspection" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-7.jpg" alt="Design studio" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-8.jpg" alt="Precision engineering" loading="lazy" /></div>
+          <div class="story-img"><img src="/images/story/story-9.jpg" alt="Final product" loading="lazy" /></div>
+        </div>
+        <div class="story-text">
+          <p>Our story began when visionary craftsmen brought European precision to Canadian cabinetry, blending it with modern, automotive-inspired engineering techniques.</p>
+          <p>We design, engineer, manufacture, and deliver custom luxury cabinetry, offering our clients bespoke creations that are the epitome of functionality and elegance. When an artisan's mastery meets modern technology, two facets of the human journey intertwine: creation and precision.</p>
+          <p class="story-tagline">With CARA, Living is Beautiful.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- How It Works -->
+  <section class="how-it-works-scroll" id="how-it-works">
+    <div class="hiw-sticky">
+      <!-- Left: Steps -->
+      <div class="hiw-steps-panel">
+        <div class="hiw-steps-inner">
+          <div class="hiw-header">
+            <h2>How it works</h2>
+            <p>From first call to dream kitchen — it's simpler than you think.</p>
+          </div>
+          <div class="hiw-step" data-step="0">
+            <div class="hiw-step-number">1</div>
+            <div class="hiw-step-content">
+              <h3>Contact Us</h3>
+              <p>Reach out and tell us about your dream kitchen — your style, layout, and vision. We'll guide you through every option.</p>
+            </div>
+          </div>
+          <div class="hiw-step" data-step="1">
+            <div class="hiw-step-number">2</div>
+            <div class="hiw-step-content">
+              <h3>Get an Instant Estimate</h3>
+              <p>Receive a transparent, no-obligation estimate tailored to your kitchen size, style, and finish preferences.</p>
+            </div>
+          </div>
+          <div class="hiw-step" data-step="2">
+            <div class="hiw-step-number">3</div>
+            <div class="hiw-step-content">
+              <h3>Book an Inspection</h3>
+              <p>Our team visits your space to take precise measurements and finalize every detail for a perfect fit.</p>
+            </div>
+          </div>
+          <div class="hiw-step" data-step="3">
+            <div class="hiw-step-number">4</div>
+            <div class="hiw-step-content">
+              <h3>Get Your New Kitchen</h3>
+              <p>Your custom cabinets are factory-assembled and delivered to your door — ready for professional installation or DIY.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Images -->
+      <div class="hiw-image-panel">
+        <img src="/images/hiw-1.jpg" alt="Step 1" class="hiw-img active" data-img="0" />
+        <img src="/images/hiw-2.jpg" alt="Step 2" class="hiw-img" data-img="1" />
+        <img src="/images/hiw-3.jpg" alt="Step 3" class="hiw-img" data-img="2" />
+        <img src="/images/hiw-4.jpg" alt="Step 4" class="hiw-img" data-img="3" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <div class="reviews-scroll" id="reviews-scroll">
+    <section class="section reviews" id="reviews">
+      <div class="container">
+        <div class="section-header">
+          <h2>What our customers say</h2>
+          <p>Join thousands of homeowners who chose Cara for their kitchen transformation.</p>
+        </div>
+        <div class="stagger-testimonials" id="stagger-testimonials"></div>
+        <div class="stagger-nav">
+          <button id="stagger-prev" aria-label="Previous testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button id="stagger-next" aria-label="Next testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Video Showcase -->
+  <div class="showcase-scroll" id="showcase-scroll">
+    <section class="section video-showcase" id="video-showcase">
+      <video class="showcase-video active" id="showcase-video-a" muted playsinline preload="none">
+      </video>
+      <video class="showcase-video" id="showcase-video-b" muted playsinline></video>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-scroll" id="footer-scroll">
+    <footer class="site-footer" id="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">CARA</div>
+            <p>Custom renovations, made accessible. Proudly designed in Canada and delivered to your door.</p>
+            <div class="footer-social">
+              <a href="#" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="#" aria-label="Pinterest">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="#">Base Cabinets</a></li>
+              <li><a href="#">Wall Cabinets</a></li>
+              <li><a href="#">Tall Cabinets</a></li>
+              <li><a href="#">Vanity Cabinets</a></li>
+              <li><a href="#">Panels &amp; Trim</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Learn</h4>
+            <ul>
+              <li><a href="#">Our Products</a></li>
+              <li><a href="#">Our Styles</a></li>
+              <li><a href="#">How We Compare</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Reviews</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Book a Consultation</a></li>
+              <li><a href="#">Visit Studio</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Layout Drawings</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 CARA Inc. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Limited Warranty</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

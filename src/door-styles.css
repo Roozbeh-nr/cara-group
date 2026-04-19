@@ -1,0 +1,105 @@
+/* === Door Styles Page === */
+
+/* Same dark background treatment as shop/finishes */
+.door-styles-products {
+  position: relative;
+  min-height: 100vh;
+  padding: 140px 0 4rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #111 40%, #0d0d0d 100%);
+  overflow: hidden;
+  contain: layout style;
+}
+
+/* B&W filter on all door style swatches */
+.door-style-swatch img {
+  filter: grayscale(100%);
+  transition: filter 0.4s ease, transform 0.3s ease;
+}
+
+.door-style-card:hover .door-style-swatch img {
+  filter: grayscale(100%) brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* Grid */
+.door-styles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0 3rem;
+}
+
+/* Card */
+.door-style-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.door-style-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Swatch */
+.door-style-swatch {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.door-style-swatch img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Info */
+.door-style-info {
+  padding: 0.75rem 1rem;
+}
+
+.door-style-name {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.door-style-type {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .door-styles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .door-styles-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  
+  .door-style-info {
+    padding: 0.5rem 0.75rem;
+  }
+}
