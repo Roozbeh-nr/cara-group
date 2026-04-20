@@ -12,56 +12,26 @@ import './style.css';
   }, 5000);
 })();
 
-// --- Hide announcement banner during slideshow hero ---
-(() => {
-  const slideshowHero = document.getElementById('slideshow-hero');
-  const announcementBanner = document.querySelector('.announcement-banner');
-  if (!slideshowHero) return;
-
-  function updateHeaderVisibility() {
-    const rect = slideshowHero.getBoundingClientRect();
-    const inSlideshow = rect.bottom > 0;
-    if (announcementBanner) announcementBanner.classList.toggle('slideshow-hidden', inSlideshow);
-  }
-
-  window.addEventListener('scroll', updateHeaderVisibility, { passive: true });
-  updateHeaderVisibility();
-})();
-
 // --- Hero Video Cycle (Dual-video crossfade, no flash) ---
 const heroVideoA = document.getElementById('hero-video-a');
 const heroVideoB = document.getElementById('hero-video-b');
 if (heroVideoA && heroVideoB) {
-  const heroSources = [
-    '/videos/hero-1.mp4',
-    '/videos/hero-2.mp4',
-  ];
+  const heroSources = ['/videos/hero-1.mp4', '/videos/hero-2.mp4'];
   let heroIdx = 0;
   let currentVideo = heroVideoA;
   let nextVideo = heroVideoB;
 
   heroVideoA.play();
 
-  function queueNextHero() {
-    heroIdx = (heroIdx + 1) % heroSources.length;
-    nextVideo.src = heroSources[heroIdx];
-    nextVideo.load();
-  }
-
   function onHeroEnded() {
-    // Preload next in the hidden video
     heroIdx = (heroIdx + 1) % heroSources.length;
     nextVideo.src = heroSources[heroIdx];
     nextVideo.load();
-
     nextVideo.addEventListener('canplay', function onReady() {
       nextVideo.removeEventListener('canplay', onReady);
-      // Crossfade: show next, hide current
       nextVideo.classList.add('active');
       currentVideo.classList.remove('active');
       nextVideo.play();
-
-      // Swap references
       const temp = currentVideo;
       currentVideo = nextVideo;
       nextVideo = temp;
@@ -72,26 +42,6 @@ if (heroVideoA && heroVideoB) {
   heroVideoB.addEventListener('ended', onHeroEnded);
 }
 
-
-// (Snapping handled by CSS scroll-snap — no JS needed)
-
-
-// --- Sticky Header ---
-const header = document.getElementById('site-header');
-const banner = document.querySelector('.announcement-banner');
-let lastScrollY = 0;
-
-function updateHeader() {
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-    if (banner) banner.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-    if (banner) banner.classList.remove('scrolled');
-  }
-  lastScrollY = window.scrollY;
-}
-
 // --- Stagger Testimonials ---
 const staggerContainer = document.getElementById('stagger-testimonials');
 const staggerPrev = document.getElementById('stagger-prev');
@@ -99,7 +49,6 @@ const staggerNext = document.getElementById('stagger-next');
 
 if (staggerContainer && staggerPrev && staggerNext) {
   const CARD_SIZE = window.innerWidth < 640 ? 300 : 420;
-
   const testimonials = [
     { text: "Incredible quality for the price. The cabinets arrived fully assembled and the soft-close drawers feel premium.", by: "Sarah M., Toronto ON", img: "/images/avatar-sarah.png" },
     { text: "We saved over $8,000 compared to a local quote for the same style. The team was super responsive.", by: "James K., Mississauga ON", img: "/images/avatar-james.png" },
@@ -118,70 +67,39 @@ if (staggerContainer && staggerPrev && staggerNext) {
   function renderCards() {
     staggerContainer.innerHTML = '';
     const half = Math.floor(list.length / 2);
-
     list.forEach((t, i) => {
       const position = i - half;
       const isCenter = position === 0;
-
       const card = document.createElement('div');
       card.className = 'stagger-card' + (isCenter ? ' is-center' : '');
-      card.style.transform = `
-        translate(-50%, -50%)
-        translateX(${(CARD_SIZE / 1.5) * position}px)
-        translateY(${isCenter ? -65 : position % 2 ? 15 : -15}px)
-        rotate(${isCenter ? 0 : position % 2 ? 2.5 : -2.5}deg)
-      `;
+      card.style.transform = `translate(-50%, -50%) translateX(${(CARD_SIZE / 1.5) * position}px) translateY(${isCenter ? -65 : position % 2 ? 15 : -15}px) rotate(${isCenter ? 0 : position % 2 ? 2.5 : -2.5}deg)`;
       card.style.zIndex = isCenter ? 10 : Math.max(1, 5 - Math.abs(position));
-
-      card.innerHTML = `
-        <img src="${t.img}" alt="${t.by.split(',')[0]}" class="stagger-avatar" />
-        <h3 class="stagger-quote">"${t.text}"</h3>
-        <p class="stagger-author">— ${t.by}</p>
-      `;
-
-      card.addEventListener('click', () => {
-        if (position !== 0) shiftList(position);
-      });
-
+      card.innerHTML = `<img src="${t.img}" alt="${t.by.split(',')[0]}" class="stagger-avatar" /><h3 class="stagger-quote">"${t.text}"</h3><p class="stagger-author">— ${t.by}</p>`;
+      card.addEventListener('click', () => { if (position !== 0) shiftList(position); });
       staggerContainer.appendChild(card);
     });
   }
 
   function shiftList(steps) {
     const arr = [...list];
-    if (steps > 0) {
-      for (let i = 0; i < steps; i++) {
-        arr.push(arr.shift());
-      }
-    } else {
-      for (let i = 0; i < Math.abs(steps); i++) {
-        arr.unshift(arr.pop());
-      }
-    }
+    if (steps > 0) { for (let i = 0; i < steps; i++) arr.push(arr.shift()); }
+    else { for (let i = 0; i < Math.abs(steps); i++) arr.unshift(arr.pop()); }
     list = arr;
     renderCards();
   }
 
   staggerPrev.addEventListener('click', () => shiftList(-1));
   staggerNext.addEventListener('click', () => shiftList(1));
-
   renderCards();
 }
 
-// --- Video Showcase (Lazy-loaded, dual-video crossfade) ---
+// --- Video Showcase (Lazy-loaded) ---
 const showcaseVideoA = document.getElementById('showcase-video-a');
 const showcaseVideoB = document.getElementById('showcase-video-b');
 if (showcaseVideoA && showcaseVideoB) {
-  const showcaseSources = [
-    '/videos/showcase-kitchen.mp4',
-    '/videos/showcase-wine-racks.mp4',
-  ];
-  let scIdx = 0;
-  let scCurrent = showcaseVideoA;
-  let scNext = showcaseVideoB;
-  let showcaseStarted = false;
+  const showcaseSources = ['/videos/showcase-kitchen.mp4', '/videos/showcase-wine-racks.mp4'];
+  let scIdx = 0, scCurrent = showcaseVideoA, scNext = showcaseVideoB, showcaseStarted = false;
 
-  // Only load when section is near viewport
   const showcaseSection = document.getElementById('showcase-scroll');
   if (showcaseSection) {
     const lazyObserver = new IntersectionObserver((entries) => {
@@ -200,16 +118,12 @@ if (showcaseVideoA && showcaseVideoB) {
     scIdx = (scIdx + 1) % showcaseSources.length;
     scNext.src = showcaseSources[scIdx];
     scNext.load();
-
     scNext.addEventListener('canplay', function onReady() {
       scNext.removeEventListener('canplay', onReady);
       scNext.classList.add('active');
       scCurrent.classList.remove('active');
       scNext.play();
-
-      const temp = scCurrent;
-      scCurrent = scNext;
-      scNext = temp;
+      const temp = scCurrent; scCurrent = scNext; scNext = temp;
     }, { once: true });
   }
 
@@ -225,119 +139,160 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(targetId);
     if (target) {
-      const headerOffset = 80;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
     }
   });
 });
 
-// --- Scroll-Driven Hero → Comparison Overlay ---
+
+// ====================================================================
+// PERFORMANCE-OPTIMIZED SCROLL SYSTEM
+// Uses cached offsets + window.scrollY to avoid getBoundingClientRect()
+// All reads are batched before writes to prevent layout thrashing
+// ====================================================================
+
+const header = document.getElementById('site-header');
+const headerBanner = document.querySelector('.announcement-banner');
 const heroWrapper = document.getElementById('hero-wrapper');
 const comparisonOverlay = document.getElementById('comparison-overlay');
 const heroContent = document.getElementById('hero-content');
 const grayscaleOverlay = document.getElementById('hero-grayscale-overlay');
-let updateHeroComparison = null;
-
-if (heroWrapper && comparisonOverlay) {
-  let cachedVh = window.innerHeight;
-  let isOverlayVisible = false;
-  let lastProgress = -1;
-
-  // Recalculate vh on resize
-  window.addEventListener('resize', () => { cachedVh = window.innerHeight; }, { passive: true });
-
-  updateHeroComparison = () => {
-    const scrolled = -heroWrapper.getBoundingClientRect().top;
-
-    // Transition zone: first 80vh of scroll does the animation
-    // After that, the comparison just stays visible (dwell time)
-    const transitionZone = cachedVh * 0.6;
-    const progress = Math.max(0, Math.min(1, scrolled / transitionZone));
-
-    // Skip if nothing changed (avoids unnecessary style writes)
-    if (Math.abs(progress - lastProgress) < 0.005) return;
-    lastProgress = progress;
-
-    // Desaturate via overlay opacity (GPU-composited, no video re-processing)
-    if (grayscaleOverlay) {
-      grayscaleOverlay.style.opacity = progress;
-    }
-
-    // Slide overlay up: starts at translateY(100%), ends at translateY(0%)
-    comparisonOverlay.style.transform = `translateY(${100 * (1 - progress)}%)`;
-    comparisonOverlay.style.opacity = progress;
-
-    const shouldBeVisible = progress > 0.05;
-    if (shouldBeVisible !== isOverlayVisible) {
-      isOverlayVisible = shouldBeVisible;
-      comparisonOverlay.classList.toggle('visible', shouldBeVisible);
-    }
-
-    // Fade out hero text as comparison slides in
-    heroContent.style.opacity = Math.max(0, 1 - progress * 1.5);
-    heroContent.style.transform = `translateY(${-progress * 40}px)`;
-  };
-
-  updateHeroComparison(); // init
-}
-
-// --- Scroll-Activated Quality Section ---
 const qualitySection = document.querySelector('.quality-scroll');
-let updateQualityStep = null;
-if (qualitySection) {
-  const totalSteps = 4;
-  const images = qualitySection.querySelectorAll('.quality-slide-img');
-  const steps = qualitySection.querySelectorAll('.quality-step');
-  const dots = qualitySection.querySelectorAll('.quality-dot');
-  let currentStep = -1;
+const hiwSection = document.querySelector('.how-it-works-scroll');
 
-  updateQualityStep = () => {
+// Cache section offsets — recalculated only on resize
+let sectionCache = {};
+let cachedVh = window.innerHeight;
+
+function cacheSectionOffsets() {
+  cachedVh = window.innerHeight;
+  const scrollY = window.scrollY;
+
+  if (heroWrapper) {
+    const rect = heroWrapper.getBoundingClientRect();
+    sectionCache.hero = { top: rect.top + scrollY, height: heroWrapper.offsetHeight };
+  }
+  if (qualitySection) {
     const rect = qualitySection.getBoundingClientRect();
-    const sectionHeight = qualitySection.offsetHeight;
-    const scrolled = -rect.top; // how far we've scrolled into the section
-    const stepHeight = sectionHeight / 3.5; // matches 300vh section
-
-    // Calculate which step we're on
-    let step = Math.floor(scrolled / stepHeight);
-    step = Math.max(0, Math.min(totalSteps - 1, step));
-
-    if (step !== currentStep) {
-      currentStep = step;
-
-      // Update images
-      images.forEach(img => img.classList.remove('active'));
-      if (images[step]) images[step].classList.add('active');
-
-      // Update text
-      steps.forEach(s => s.classList.remove('active'));
-      if (steps[step]) steps[step].classList.add('active');
-
-      // Update dots
-      dots.forEach(d => d.classList.remove('active'));
-      if (dots[step]) dots[step].classList.add('active');
-    }
-  };
-
-  updateQualityStep(); // init
+    sectionCache.quality = { top: rect.top + scrollY, height: qualitySection.offsetHeight };
+  }
+  if (hiwSection) {
+    const rect = hiwSection.getBoundingClientRect();
+    sectionCache.hiw = { top: rect.top + scrollY, height: hiwSection.offsetHeight };
+  }
 }
 
-// --- Scroll-Activated How It Works Section ---
-const hiwSection = document.querySelector('.how-it-works-scroll');
-let updateHIW = null;
+// Calculate offsets on load and resize (debounced)
+cacheSectionOffsets();
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(cacheSectionOffsets, 250);
+}, { passive: true });
+
+// Quality section elements
+let qualityImages, qualitySteps, qualityDots, currentQualityStep = -1;
+if (qualitySection) {
+  qualityImages = qualitySection.querySelectorAll('.quality-slide-img');
+  qualitySteps = qualitySection.querySelectorAll('.quality-step');
+  qualityDots = qualitySection.querySelectorAll('.quality-dot');
+}
+
+// HIW section elements
+let hiwSteps, hiwImgs, currentHiwStep = -1;
 if (hiwSection) {
-  const hiwSteps = hiwSection.querySelectorAll('.hiw-step');
-  const hiwImgs = hiwSection.querySelectorAll('.hiw-img');
-  let currentHiwStep = -1;
+  hiwSteps = hiwSection.querySelectorAll('.hiw-step');
+  hiwImgs = hiwSection.querySelectorAll('.hiw-img');
+}
 
-  updateHIW = () => {
-    const rect = hiwSection.getBoundingClientRect();
-    const sectionHeight = hiwSection.offsetHeight;
-    const scrolled = -rect.top;
-    const stepHeight = sectionHeight / 3.5;
+// Hero state
+let lastHeroProgress = -1;
+let isOverlayVisible = false;
 
-    let step = Math.floor(scrolled / stepHeight);
+// Slideshow banner state
+const slideshowHero = document.getElementById('slideshow-hero');
+let slideshowBottom = 0;
+if (slideshowHero) {
+  slideshowBottom = slideshowHero.getBoundingClientRect().bottom + window.scrollY;
+}
+
+// --- SINGLE UNIFIED SCROLL HANDLER ---
+// Reads scrollY ONCE, does all math with cached offsets, then writes
+let scrollTicking = false;
+
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    requestAnimationFrame(onScroll);
+    scrollTicking = true;
+  }
+}, { passive: true });
+
+function onScroll() {
+  // === ONE READ ===
+  const scrollY = window.scrollY;
+
+  // === ALL WRITES (no layout reads from here on) ===
+
+  // 1. Header
+  if (scrollY > 50) {
+    header.classList.add('scrolled');
+    if (headerBanner) headerBanner.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+    if (headerBanner) headerBanner.classList.remove('scrolled');
+  }
+
+  // 1b. Slideshow banner hide
+  if (slideshowHero && headerBanner) {
+    headerBanner.classList.toggle('slideshow-hidden', scrollY < slideshowBottom);
+  }
+
+  // 2. Hero comparison overlay
+  if (heroWrapper && comparisonOverlay && sectionCache.hero) {
+    const heroScrolled = scrollY - sectionCache.hero.top;
+    const transitionZone = cachedVh * 0.6;
+    const progress = Math.max(0, Math.min(1, heroScrolled / transitionZone));
+
+    if (Math.abs(progress - lastHeroProgress) >= 0.005) {
+      lastHeroProgress = progress;
+
+      if (grayscaleOverlay) grayscaleOverlay.style.opacity = progress;
+      comparisonOverlay.style.transform = `translateY(${100 * (1 - progress)}%)`;
+      comparisonOverlay.style.opacity = progress;
+      heroContent.style.opacity = Math.max(0, 1 - progress * 1.5);
+      heroContent.style.transform = `translateY(${-progress * 40}px)`;
+
+      const shouldBeVisible = progress > 0.05;
+      if (shouldBeVisible !== isOverlayVisible) {
+        isOverlayVisible = shouldBeVisible;
+        comparisonOverlay.classList.toggle('visible', shouldBeVisible);
+      }
+    }
+  }
+
+  // 3. Quality section steps
+  if (qualitySection && sectionCache.quality) {
+    const qScrolled = scrollY - sectionCache.quality.top;
+    const stepHeight = sectionCache.quality.height / 3.5;
+    let step = Math.floor(qScrolled / stepHeight);
+    step = Math.max(0, Math.min(3, step));
+
+    if (step !== currentQualityStep) {
+      currentQualityStep = step;
+      qualityImages.forEach(img => img.classList.remove('active'));
+      qualitySteps.forEach(s => s.classList.remove('active'));
+      qualityDots.forEach(d => d.classList.remove('active'));
+      if (qualityImages[step]) qualityImages[step].classList.add('active');
+      if (qualitySteps[step]) qualitySteps[step].classList.add('active');
+      if (qualityDots[step]) qualityDots[step].classList.add('active');
+    }
+  }
+
+  // 4. How It Works steps
+  if (hiwSection && sectionCache.hiw) {
+    const hScrolled = scrollY - sectionCache.hiw.top;
+    const stepHeight = sectionCache.hiw.height / 3.5;
+    let step = Math.floor(hScrolled / stepHeight);
     step = Math.max(0, Math.min(3, step));
 
     if (step !== currentHiwStep) {
@@ -347,31 +302,15 @@ if (hiwSection) {
       if (hiwSteps[step]) hiwSteps[step].classList.add('active');
       if (hiwImgs[step]) hiwImgs[step].classList.add('active');
     }
-  };
-  updateHIW();
+  }
+
+  scrollTicking = false;
 }
 
-// --- Single Unified Scroll Handler (rAF throttled) ---
-let scrollTicking = false;
-window.addEventListener('scroll', () => {
-  if (!scrollTicking) {
-    requestAnimationFrame(() => {
-      updateHeader();
-      if (updateHeroComparison) updateHeroComparison();
-      if (typeof updateQualityStep === 'function') updateQualityStep();
-      if (updateHIW) updateHIW();
-      scrollTicking = false;
-    });
-    scrollTicking = true;
-  }
-}, { passive: true });
+// Initial call
+onScroll();
 
 // --- Intersection Observer for Reveal Animations ---
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -379,9 +318,8 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-// Add reveal animations to key elements (NOT comparison-cards — they're in the hero overlay now)
 document.querySelectorAll('.style-card, .gallery-item').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
@@ -389,21 +327,12 @@ document.querySelectorAll('.style-card, .gallery-item').forEach(el => {
   revealObserver.observe(el);
 });
 
-// Add stagger to cards in grids
 document.querySelectorAll('.styles-grid').forEach(grid => {
-  const children = grid.children;
-  Array.from(children).forEach((child, index) => {
+  Array.from(grid.children).forEach((child, index) => {
     child.style.transitionDelay = `${index * 0.12}s`;
   });
 });
 
-// Style for revealed elements (added via JS to avoid flash of unstyled content)
 const style = document.createElement('style');
-style.textContent = `
-  .revealed {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-`;
+style.textContent = `.revealed { opacity: 1 !important; transform: translateY(0) !important; }`;
 document.head.appendChild(style);
-

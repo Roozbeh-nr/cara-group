@@ -1141,14 +1141,13 @@ h3, h4, h5, h6 {
   );
 }
 
-/* Grayscale overlay — covers the video, fades in to desaturate it.
-   Much cheaper than per-frame filter:grayscale() on live video. */
+/* Darkening overlay — fades in on scroll to dim the video.
+   Replaced mix-blend-mode:saturation which was extremely expensive. */
 .hero-grayscale-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: #000;
-  mix-blend-mode: saturation;
+  background: rgba(0, 0, 0, 0.7);
   opacity: 0;
   pointer-events: none;
   will-change: opacity;
