@@ -45,7 +45,7 @@ export const panelsData = [
 
   // TEXTURED
   { name: "Matt Light Walnut", code: "239", category: "textured", img: "/images/panels/239-matt-light-walnut.jpg" },
-  { name: "Matt Teak", code: "248", category: "textured", img: "/images/panels/248-matt-teak.png" },
+  { name: "Matt Teak", code: "248", category: "textured", img: "/images/panels/248-matt-teak.jpg" },
   { name: "Toledo Light Wood", code: "388", category: "textured", img: "/images/panels/388-toledo-light-wood.jpg" },
   { name: "Toledo Dark Wood", code: "389", category: "textured", img: "/images/panels/389-toledo-dark-wood.jpg" },
   { name: "Matt Natural Touch Oak", code: "397", category: "textured", img: "/images/panels/397-matt-natural-touch-oak.jpg" },
