@@ -255,7 +255,7 @@ if (heroWrapper && comparisonOverlay) {
 
     // Transition zone: first 80vh of scroll does the animation
     // After that, the comparison just stays visible (dwell time)
-    const transitionZone = cachedVh * 0.8;
+    const transitionZone = cachedVh * 0.6;
     const progress = Math.max(0, Math.min(1, scrolled / transitionZone));
 
     // Skip if nothing changed (avoids unnecessary style writes)
@@ -299,7 +299,7 @@ if (qualitySection) {
     const rect = qualitySection.getBoundingClientRect();
     const sectionHeight = qualitySection.offsetHeight;
     const scrolled = -rect.top; // how far we've scrolled into the section
-    const stepHeight = sectionHeight / 5; // 5 segments: 4 steps + 1 dwell
+    const stepHeight = sectionHeight / 3.5; // matches 300vh section
 
     // Calculate which step we're on
     let step = Math.floor(scrolled / stepHeight);
@@ -337,7 +337,7 @@ if (hiwSection) {
     const rect = hiwSection.getBoundingClientRect();
     const sectionHeight = hiwSection.offsetHeight;
     const scrolled = -rect.top;
-    const stepHeight = sectionHeight / 5;
+    const stepHeight = sectionHeight / 3.5;
 
     let step = Math.floor(scrolled / stepHeight);
     step = Math.max(0, Math.min(3, step));

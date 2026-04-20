@@ -99,7 +99,6 @@
 
 html {
   font-size: 16px;
-  scroll-snap-type: y proximity;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -122,16 +121,7 @@ body {
   min-height: 100vh;
 }
 
-/* Scroll-snap alignment for all major sections */
-.hero-wrapper,
-.quality-scroll,
-.story-scroll,
-.how-it-works-scroll,
-.reviews-scroll,
-.showcase-scroll,
-.footer-scroll {
-  scroll-snap-align: start;
-}
+/* Scroll-snap removed for performance — sticky sections fight with snap */
 
 img {
   max-width: 100%;
@@ -582,8 +572,9 @@ h3, h4, h5, h6 {
   padding: 12px;
   background: transparent;
   border: none;
-  animation: logo-glow-sweep 4s linear infinite, logo-flicker 1.2s ease-out 5s both;
+  animation: logo-flicker 1.2s ease-out 5s both;
   opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.5)) drop-shadow(0 0 12px rgba(255,255,255,0.3)) drop-shadow(0 0 3px rgba(255,255,255,0.4));
 }
 
 @keyframes logo-flicker {
@@ -1150,7 +1141,7 @@ h3, h4, h5, h6 {
 /* --- Hero Wrapper (scroll-merged with comparison) --- */
 .hero-wrapper {
   position: relative;
-  height: 300vh;
+  height: 200vh;
 }
 
 /* --- Hero Section --- */
@@ -1386,7 +1377,8 @@ h3, h4, h5, h6 {
 /* --- Quality Section (Scroll-Activated) --- */
 .quality-scroll {
   position: relative;
-  height: 500vh; /* 4 steps + extra dwell on last */
+  height: 300vh; /* reduced from 500vh for performance */
+  contain: layout style paint;
 }
 
 .quality-sticky {
@@ -1412,6 +1404,7 @@ h3, h4, h5, h6 {
   object-fit: cover;
   opacity: 0;
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
 }
 
 .quality-slide-img.active {
@@ -1566,7 +1559,8 @@ h3, h4, h5, h6 {
 /* --- Story Scroll Wrapper --- */
 .story-scroll {
   position: relative;
-  height: 200vh;
+  height: 150vh;
+  contain: layout style paint;
 }
 
 .story {
@@ -1659,7 +1653,8 @@ h3, h4, h5, h6 {
 /* --- How It Works (Scroll-Linked Split) --- */
 .how-it-works-scroll {
   position: relative;
-  height: 500vh;
+  height: 300vh;
+  contain: layout style paint;
 }
 
 .hiw-sticky {
