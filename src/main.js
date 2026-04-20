@@ -1,4 +1,5 @@
 import './style.css';
+import './get-started-form.js';
 
 // --- Slideshow Hero (5-second crossfade cycle) ---
 (() => {
