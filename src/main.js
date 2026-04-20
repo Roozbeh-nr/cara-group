@@ -34,9 +34,7 @@ const heroVideoB = document.getElementById('hero-video-b');
 if (heroVideoA && heroVideoB) {
   const heroSources = [
     '/videos/hero-1.mp4',
-    '/videos/hero-1-reversed.mp4',
     '/videos/hero-2.mp4',
-    '/videos/hero-2-reversed.mp4',
   ];
   let heroIdx = 0;
   let currentVideo = heroVideoA;
@@ -176,7 +174,7 @@ const showcaseVideoB = document.getElementById('showcase-video-b');
 if (showcaseVideoA && showcaseVideoB) {
   const showcaseSources = [
     '/videos/showcase-kitchen.mp4',
-    '/videos/showcase-kitchen-reversed.mp4',
+    '/videos/showcase-wine-racks.mp4',
   ];
   let scIdx = 0;
   let scCurrent = showcaseVideoA;

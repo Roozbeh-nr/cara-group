@@ -2,17 +2,7 @@
    PALET CABINETS — Design System & Styles
    ============================================ */
 
-/* --- Animated Gradient Border --- */
-@property --gradient-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes gradient-rotate {
-  from { --gradient-angle: 0deg; }
-  to { --gradient-angle: 360deg; }
-}
+/* --- Static border glow (replaces animated gradient-rotate for performance) --- */
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
 
@@ -387,24 +377,10 @@ h3, h4, h5, h6 {
   padding: 0.6em 1.5em;
   border-radius: 4px;
   position: relative;
-  background:
-    linear-gradient(#000000, #000000),
-    conic-gradient(
-      from var(--gradient-angle),
-      rgba(255,255,255,0.1) 0%,
-      rgba(255,255,255,0.5) 25%,
-      rgba(255,255,255,1) 30%,
-      rgba(255,255,255,0.5) 35%,
-      rgba(255,255,255,0.1) 50%,
-      rgba(255,255,255,0.5) 75%,
-      rgba(255,255,255,1) 80%,
-      rgba(255,255,255,0.5) 85%,
-      rgba(255,255,255,0.1) 100%
-    );
+  background: #000000;
   background-origin: padding-box, border-box;
   background-clip: padding-box, border-box;
-  border: 1.5px solid transparent;
-  animation: gradient-rotate 4s linear infinite;
+  border: 1.5px solid rgba(255,255,255,0.3);
   box-shadow: 0 0 12px rgba(255,255,255,0.1), 0 0 24px rgba(255,255,255,0.05);
 }
 
@@ -796,7 +772,6 @@ h3, h4, h5, h6 {
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: gradient-rotate 4s linear infinite;
   pointer-events: none;
 }
 
@@ -816,24 +791,10 @@ h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background:
-    linear-gradient(#000, #000),
-    conic-gradient(
-      from var(--gradient-angle),
-      rgba(255,255,255,0.1) 0%,
-      rgba(255,255,255,0.5) 25%,
-      rgba(255,255,255,1) 30%,
-      rgba(255,255,255,0.5) 35%,
-      rgba(255,255,255,0.1) 50%,
-      rgba(255,255,255,0.5) 75%,
-      rgba(255,255,255,1) 80%,
-      rgba(255,255,255,0.5) 85%,
-      rgba(255,255,255,0.1) 100%
-    );
+  background: #000;
   background-origin: padding-box, border-box;
   background-clip: padding-box, border-box;
-  border: 1.5px solid transparent;
-  animation: gradient-rotate 4s linear infinite;
+  border: 1.5px solid rgba(255,255,255,0.3);
   box-shadow: 0 0 10px rgba(255,255,255,0.12), 0 0 25px rgba(255,255,255,0.06), 0 4px 12px rgba(0,0,0,0.4);
   overflow: hidden;
   position: relative;
@@ -929,24 +890,11 @@ h3, h4, h5, h6 {
   text-transform: uppercase;
   padding: 0.7em 1.8em;
   border-radius: 4px;
-  background:
-    linear-gradient(#000, #000),
-    conic-gradient(
-      from var(--gradient-angle),
-      rgba(255,255,255,0.1) 0%,
-      rgba(255,255,255,0.5) 25%,
-      rgba(255,255,255,1) 30%,
-      rgba(255,255,255,0.5) 35%,
-      rgba(255,255,255,0.1) 50%,
-      rgba(255,255,255,0.5) 75%,
-      rgba(255,255,255,1) 80%,
-      rgba(255,255,255,0.5) 85%,
-      rgba(255,255,255,0.1) 100%
-    );
+  background: #000000;
   background-origin: padding-box, border-box;
   background-clip: padding-box, border-box;
-  border: 1.5px solid transparent;
-  animation: gradient-rotate 4s linear infinite, panel-content-fade 0.6s ease-out 2s both;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  animation: panel-content-fade 0.6s ease-out 2s both;
   overflow: hidden;
 }
 
@@ -1331,30 +1279,15 @@ h3, h4, h5, h6 {
   justify-content: center;
   font-size: 1.5rem;
   position: relative;
-  background:
-    linear-gradient(#000000, #000000),
-    conic-gradient(
-      from var(--gradient-angle),
-      rgba(255,255,255,0.1) 0%,
-      rgba(255,255,255,0.6) 25%,
-      rgba(255,255,255,1) 30%,
-      rgba(255,255,255,0.6) 35%,
-      rgba(255,255,255,0.1) 50%,
-      rgba(255,255,255,0.6) 75%,
-      rgba(255,255,255,1) 80%,
-      rgba(255,255,255,0.6) 85%,
-      rgba(255,255,255,0.1) 100%
-    );
+  background: #000000;
   background-origin: padding-box, border-box;
   background-clip: padding-box, border-box;
-  border: 2px solid transparent;
-  animation: gradient-rotate 4s linear infinite;
-  animation-play-state: paused;
+  border: 2px solid rgba(255,255,255,0.3);
   box-shadow: 0 0 15px rgba(255,255,255,0.15), 0 0 30px rgba(255,255,255,0.05);
 }
 
 .comparison-overlay.visible .comparison-card .card-icon {
-  animation-play-state: running;
+  /* static glow - no animation needed */
 }
 
 .comparison-card .card-icon svg {
