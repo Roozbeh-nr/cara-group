@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Get started with Cara Cabinets — Tell us about your project and we'll design your dream kitchen." />
+  <title>Get Started — CARA</title>
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header scrolled" id="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="header-logo">
+          <img src="/images/cara-logo-new.png" alt="Cara" class="header-logo-icon" />
+        </a>
+        <span class="header-brand">Cara Group</span>
+      </div>
+      <nav class="header-nav" id="main-nav">
+        <a href="/shop.html">Shop</a>
+        <a href="/finishes.html">Finishes</a>
+        <a href="#">Support</a>
+        <a href="/#inspiration">Inspiration</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="icon-btn" id="account-btn" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="icon-btn" id="cart-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Get Started Page -->
+  <main class="gs-page">
+    <!-- Left: Image / branding side -->
+    <div class="gs-page-left">
+      <div class="gs-page-left-content">
+        <div class="gs-page-left-overlay"></div>
+        <div class="gs-page-left-text">
+          <span class="gs-page-eyebrow">Start Your Project</span>
+          <h1 class="gs-page-headline">Let's Build<br/>Something<br/>Beautiful</h1>
+          <p class="gs-page-tagline">Premium Canadian cabinetry, designed around your vision. Tell us about your project and we'll bring it to life.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="gs-page-right">
+      <div class="gs-page-form-wrapper">
+        <!-- Rotating glow border -->
+        <div class="gs-page-glow-card">
+          <div class="gs-page-glow-border"></div>
+          <div class="gs-page-card-inner">
+
+            <!-- Progress -->
+            <div class="gs-progress">
+              <div class="gs-dots">
+                <div class="gs-dot active" data-step="0"><span class="gs-dot-label">Contact</span></div>
+                <div class="gs-dot" data-step="1"><span class="gs-dot-label">Project</span></div>
+                <div class="gs-dot" data-step="2"><span class="gs-dot-label">Style</span></div>
+                <div class="gs-dot" data-step="3"><span class="gs-dot-label">Budget</span></div>
+                <div class="gs-dot" data-step="4"><span class="gs-dot-label">Details</span></div>
+              </div>
+              <div class="gs-progress-bar">
+                <div class="gs-progress-fill" id="gs-progress-fill"></div>
+              </div>
+            </div>
+
+            <!-- Steps Container -->
+            <div class="gs-steps" id="gs-steps">
+              <!-- Step 1: Contact Info -->
+              <div class="gs-step-panel active" data-step="0">
+                <h3 class="gs-title">Tell us about yourself</h3>
+                <p class="gs-subtitle">Let's start with your contact information</p>
+                <div class="gs-fields">
+                  <div class="gs-field">
+                    <label for="gs-name">Full Name <span class="gs-required">*</span></label>
+                    <input type="text" id="gs-name" data-field="name" placeholder="Your full name" />
+                  </div>
+                  <div class="gs-field">
+                    <label for="gs-email">Email Address <span class="gs-required">*</span></label>
+                    <input type="email" id="gs-email" data-field="email" placeholder="you@example.com" />
+                  </div>
+                  <div class="gs-field">
+                    <label for="gs-phone">Phone Number</label>
+                    <input type="tel" id="gs-phone" data-field="phone" placeholder="(416) 555-0000" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Project Type -->
+              <div class="gs-step-panel" data-step="1">
+                <h3 class="gs-title">Your Project</h3>
+                <p class="gs-subtitle">What type of project are you planning?</p>
+                <div class="gs-fields">
+                  <label class="gs-label">Which room? <span class="gs-required">*</span></label>
+                  <div class="gs-option-group">
+                    <div class="gs-option" data-field="roomType" data-value="kitchen"><span class="gs-radio"></span><span>Kitchen</span></div>
+                    <div class="gs-option" data-field="roomType" data-value="bathroom"><span class="gs-radio"></span><span>Bathroom</span></div>
+                    <div class="gs-option" data-field="roomType" data-value="laundry"><span class="gs-radio"></span><span>Laundry Room</span></div>
+                    <div class="gs-option" data-field="roomType" data-value="closet"><span class="gs-radio"></span><span>Closet / Storage</span></div>
+                    <div class="gs-option" data-field="roomType" data-value="other"><span class="gs-radio"></span><span>Other</span></div>
+                  </div>
+                  <label class="gs-label" style="margin-top:1.5rem;">Is this a… <span class="gs-required">*</span></label>
+                  <div class="gs-option-group">
+                    <div class="gs-option" data-field="projectType" data-value="new-build"><span class="gs-radio"></span><span>New Build</span></div>
+                    <div class="gs-option" data-field="projectType" data-value="renovation"><span class="gs-radio"></span><span>Renovation</span></div>
+                    <div class="gs-option" data-field="projectType" data-value="replacement"><span class="gs-radio"></span><span>Cabinet Replacement Only</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Style & Finish -->
+              <div class="gs-step-panel" data-step="2">
+                <h3 class="gs-title">Style & Finish Preferences</h3>
+                <p class="gs-subtitle">Tell us about your aesthetic preferences</p>
+                <div class="gs-fields">
+                  <label class="gs-label">Cabinet door style <span class="gs-required">*</span></label>
+                  <div class="gs-option-group">
+                    <div class="gs-option" data-field="cabinetStyle" data-value="shaker"><span class="gs-radio"></span><span>Shaker</span></div>
+                    <div class="gs-option" data-field="cabinetStyle" data-value="flat-panel"><span class="gs-radio"></span><span>Flat Panel (Slab)</span></div>
+                    <div class="gs-option" data-field="cabinetStyle" data-value="raised-panel"><span class="gs-radio"></span><span>Raised Panel</span></div>
+                    <div class="gs-option" data-field="cabinetStyle" data-value="not-sure"><span class="gs-radio"></span><span>Not sure yet</span></div>
+                  </div>
+                  <label class="gs-label" style="margin-top:1.5rem;">Finish type</label>
+                  <div class="gs-option-group">
+                    <div class="gs-option" data-field="finishType" data-value="painted"><span class="gs-radio"></span><span>Painted</span></div>
+                    <div class="gs-option" data-field="finishType" data-value="thermofoil"><span class="gs-radio"></span><span>Thermofoil</span></div>
+                    <div class="gs-option" data-field="finishType" data-value="wood-grain"><span class="gs-radio"></span><span>Wood Grain</span></div>
+                    <div class="gs-option" data-field="finishType" data-value="not-sure"><span class="gs-radio"></span><span>Not sure</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Budget & Timeline -->
+              <div class="gs-step-panel" data-step="3">
+                <h3 class="gs-title">Budget & Timeline</h3>
+                <p class="gs-subtitle">Let's talk about your investment</p>
+                <div class="gs-fields">
+                  <label class="gs-label">Budget range (CAD) <span class="gs-required">*</span></label>
+                  <div class="gs-option-group">
+                    <div class="gs-option" data-field="budget" data-value="under-5000"><span class="gs-radio"></span><span>Under $5,000</span></div>
+                    <div class="gs-option" data-field="budget" data-value="5000-10000"><span class="gs-radio"></span><span>$5,000 – $10,000</span></div>
+                    <div class="gs-option" data-field="budget" data-value="10000-20000"><span class="gs-radio"></span><span>$10,000 – $20,000</span></div>
+                    <div class="gs-option" data-field="budget" data-value="20000-40000"><span class="gs-radio"></span><span>$20,000 – $40,000</span></div>
+                    <div class="gs-option" data-field="budget" data-value="over-40000"><span class="gs-radio"></span><span>Over $40,000</span></div>
+                  </div>
+                  <label class="gs-label" style="margin-top:1.5rem;">Timeline <span class="gs-required">*</span></label>
+                  <div class="gs-option-group">
+                    <div class="gs-option" data-field="timeline" data-value="asap"><span class="gs-radio"></span><span>ASAP</span></div>
+                    <div class="gs-option" data-field="timeline" data-value="1-month"><span class="gs-radio"></span><span>Within 1 month</span></div>
+                    <div class="gs-option" data-field="timeline" data-value="1-3-months"><span class="gs-radio"></span><span>1–3 months</span></div>
+                    <div class="gs-option" data-field="timeline" data-value="flexible"><span class="gs-radio"></span><span>Flexible</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5: Additional Details -->
+              <div class="gs-step-panel" data-step="4">
+                <h3 class="gs-title">Additional Details</h3>
+                <p class="gs-subtitle">Anything else we should know?</p>
+                <div class="gs-fields">
+                  <div class="gs-field">
+                    <label for="gs-measurements">Approximate kitchen size / measurements</label>
+                    <input type="text" id="gs-measurements" data-field="measurements" placeholder="e.g. 10' x 12' L-shaped" />
+                  </div>
+                  <div class="gs-field">
+                    <label for="gs-additional">Any other requirements or notes?</label>
+                    <textarea id="gs-additional" data-field="additionalInfo" placeholder="Tell us about your vision, specific needs, or any questions you have…" rows="4"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="gs-footer">
+              <button class="gs-btn gs-btn-outline" id="gs-prev">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                <span>Back</span>
+              </button>
+              <div class="gs-step-indicator" id="gs-step-indicator">Step 1 of 5: Contact Info</div>
+              <button class="gs-btn gs-btn-primary" id="gs-next">
+                <span class="gs-btn-text">Next</span>
+                <span class="gs-btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/get-started-page.js"></script>
+</body>
+</html>

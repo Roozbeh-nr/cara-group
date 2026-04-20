@@ -11,6 +11,7 @@ export default defineConfig({
         categories: resolve(__dirname, 'categories.html'),
         product: resolve(__dirname, 'product.html'),
         doorStyles: resolve(__dirname, 'door-styles.html'),
+        getStarted: resolve(__dirname, 'get-started.html'),
       },
     },
   },
