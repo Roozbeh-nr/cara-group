@@ -1376,7 +1376,7 @@ h3, h4, h5, h6 {
 /* --- Quality Section (Scroll-Activated) --- */
 .quality-scroll {
   position: relative;
-  height: 300vh; /* reduced from 500vh for performance */
+  height: 400vh;
   contain: layout style paint;
 }
 
@@ -1652,7 +1652,7 @@ h3, h4, h5, h6 {
 /* --- How It Works (Scroll-Linked Split) --- */
 .how-it-works-scroll {
   position: relative;
-  height: 300vh;
+  height: 400vh;
   contain: layout style paint;
 }
 

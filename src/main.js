@@ -273,7 +273,7 @@ function onScroll() {
   // 3. Quality section steps
   if (qualitySection && sectionCache.quality) {
     const qScrolled = scrollY - sectionCache.quality.top;
-    const stepHeight = sectionCache.quality.height / 3.5;
+    const stepHeight = sectionCache.quality.height / 4.5;
     let step = Math.floor(qScrolled / stepHeight);
     step = Math.max(0, Math.min(3, step));
 
@@ -291,7 +291,7 @@ function onScroll() {
   // 4. How It Works steps
   if (hiwSection && sectionCache.hiw) {
     const hScrolled = scrollY - sectionCache.hiw.top;
-    const stepHeight = sectionCache.hiw.height / 3.5;
+    const stepHeight = sectionCache.hiw.height / 4.5;
     let step = Math.floor(hScrolled / stepHeight);
     step = Math.max(0, Math.min(3, step));
 
