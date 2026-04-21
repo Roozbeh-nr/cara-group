@@ -1,5 +1,5 @@
 import './style.css';
-import './get-started-form.js';
+// Form is now on dedicated /get-started.html page (see get-started-page.js)
 
 // --- Slideshow Hero (5-second crossfade cycle) ---
 (() => {
