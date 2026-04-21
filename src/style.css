@@ -2790,6 +2790,8 @@ h3, h4, h5, h6 {
 .gs-page-form-wrapper {
   width: 100%;
   max-width: 520px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Rotating glow card */
