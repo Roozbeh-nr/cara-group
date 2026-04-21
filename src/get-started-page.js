@@ -65,10 +65,18 @@ if (stepsContainer) {
   goToStep(0);
 }
 
+let confirmationShown = false;
+
 function goToStep(step) {
   if (step < 0 || step >= STEPS.length) return;
   const direction = step > currentStep ? 'forward' : 'backward';
   const panels = stepsContainer.querySelectorAll('.gs-step-panel');
+
+  // Show confirmation banner when leaving step 1 for the first time
+  if (currentStep === 0 && step === 1 && !confirmationShown) {
+    confirmationShown = true;
+    showConfirmationBanner();
+  }
 
   if (panels[currentStep]) {
     panels[currentStep].classList.remove('active', 'slide-in-forward', 'slide-in-backward');
@@ -96,6 +104,15 @@ function goToStep(step) {
 
   restoreSelections();
   updateNextBtn();
+}
+
+function showConfirmationBanner() {
+  const banner = document.getElementById('gs-confirmation-banner');
+  if (banner) {
+    banner.classList.add('visible');
+    // Auto-hide after 6 seconds
+    setTimeout(() => banner.classList.remove('visible'), 6000);
+  }
 }
 
 function restoreSelections() {
