@@ -1,6 +1,7 @@
 import './style.css';
 // Form is now on dedicated /get-started.html page (see get-started-page.js)
 
+
 // --- Slideshow Hero (5-second crossfade cycle) ---
 (() => {
   const slides = document.querySelectorAll('.slideshow-slide');
@@ -17,7 +18,7 @@ import './style.css';
 const heroVideoA = document.getElementById('hero-video-a');
 const heroVideoB = document.getElementById('hero-video-b');
 if (heroVideoA && heroVideoB) {
-  const heroSources = ['/videos/hero-1.mp4', '/videos/hero-2.mp4'];
+  const heroSources = ['/videos/hero-1.mp4', '/videos/hero-2.mp4', '/videos/hero-3.mp4'];
   let heroIdx = 0;
   let currentVideo = heroVideoA;
   let nextVideo = heroVideoB;
@@ -94,43 +95,7 @@ if (staggerContainer && staggerPrev && staggerNext) {
   renderCards();
 }
 
-// --- Video Showcase (Lazy-loaded) ---
-const showcaseVideoA = document.getElementById('showcase-video-a');
-const showcaseVideoB = document.getElementById('showcase-video-b');
-if (showcaseVideoA && showcaseVideoB) {
-  const showcaseSources = ['/videos/showcase-kitchen.mp4', '/videos/showcase-wine-racks.mp4'];
-  let scIdx = 0, scCurrent = showcaseVideoA, scNext = showcaseVideoB, showcaseStarted = false;
 
-  const showcaseSection = document.getElementById('showcase-scroll');
-  if (showcaseSection) {
-    const lazyObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !showcaseStarted) {
-        showcaseStarted = true;
-        showcaseVideoA.src = showcaseSources[0];
-        showcaseVideoA.load();
-        showcaseVideoA.play();
-        lazyObserver.disconnect();
-      }
-    }, { rootMargin: '200px' });
-    lazyObserver.observe(showcaseSection);
-  }
-
-  function onShowcaseEnded() {
-    scIdx = (scIdx + 1) % showcaseSources.length;
-    scNext.src = showcaseSources[scIdx];
-    scNext.load();
-    scNext.addEventListener('canplay', function onReady() {
-      scNext.removeEventListener('canplay', onReady);
-      scNext.classList.add('active');
-      scCurrent.classList.remove('active');
-      scNext.play();
-      const temp = scCurrent; scCurrent = scNext; scNext = temp;
-    }, { once: true });
-  }
-
-  showcaseVideoA.addEventListener('ended', onShowcaseEnded);
-  showcaseVideoB.addEventListener('ended', onShowcaseEnded);
-}
 
 // --- Smooth Scroll for Anchor Links ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -310,30 +275,3 @@ function onScroll() {
 
 // Initial call
 onScroll();
-
-// --- Intersection Observer for Reveal Animations ---
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('revealed');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-document.querySelectorAll('.style-card, .gallery-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  revealObserver.observe(el);
-});
-
-document.querySelectorAll('.styles-grid').forEach(grid => {
-  Array.from(grid.children).forEach((child, index) => {
-    child.style.transitionDelay = `${index * 0.12}s`;
-  });
-});
-
-const style = document.createElement('style');
-style.textContent = `.revealed { opacity: 1 !important; transform: translateY(0) !important; }`;
-document.head.appendChild(style);

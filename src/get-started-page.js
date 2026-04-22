@@ -6,19 +6,18 @@ import './style.css';
 
 const STEPS = [
   { id: 'contact',  title: 'Contact Info' },
-  { id: 'project',  title: 'Project Type' },
-  { id: 'style',    title: 'Style & Finish' },
+  { id: 'rooms',    title: 'Rooms' },
   { id: 'budget',   title: 'Budget' },
+  { id: 'timeline', title: 'Timeline' },
   { id: 'details',  title: 'Details' },
 ];
 
 let currentStep = 0;
 let formData = {
   name: '', email: '', phone: '',
-  roomType: '', projectType: '',
-  cabinetStyle: '', finishType: '', colorPreference: '',
+  roomTypes: [],  // multi-select array
   budget: '', timeline: '',
-  measurements: '', additionalInfo: '',
+  additionalInfo: '',
 };
 
 const prevBtn = document.getElementById('gs-prev');
@@ -48,17 +47,30 @@ if (stepsContainer) {
     updateNextBtn();
   });
 
-  // Radio click delegation
+  // Option click delegation — supports both single-select and multi-select
   stepsContainer.addEventListener('click', (e) => {
     const option = e.target.closest('.gs-option');
     if (!option) return;
     const field = option.dataset.field;
     const value = option.dataset.value;
     if (!field || !value) return;
+
     const group = option.closest('.gs-option-group');
-    if (group) group.querySelectorAll('.gs-option').forEach(o => o.classList.remove('selected'));
-    option.classList.add('selected');
-    formData[field] = value;
+    const isMulti = group && group.dataset.multi === 'true';
+
+    if (isMulti) {
+      // Toggle selection
+      option.classList.toggle('selected');
+      // Rebuild array from selected options
+      const selected = [];
+      group.querySelectorAll('.gs-option.selected').forEach(o => selected.push(o.dataset.value));
+      formData[field] = selected;
+    } else {
+      // Single select — clear others in group
+      if (group) group.querySelectorAll('.gs-option').forEach(o => o.classList.remove('selected'));
+      option.classList.add('selected');
+      formData[field] = value;
+    }
     updateNextBtn();
   });
 
@@ -110,7 +122,6 @@ function showConfirmationBanner() {
   const banner = document.getElementById('gs-confirmation-banner');
   if (banner) {
     banner.classList.add('visible');
-    // Auto-hide after 6 seconds
     setTimeout(() => banner.classList.remove('visible'), 6000);
   }
 }
@@ -122,7 +133,14 @@ function restoreSelections() {
     if (formData[input.dataset.field]) input.value = formData[input.dataset.field];
   });
   panel.querySelectorAll('.gs-option[data-field]').forEach(option => {
-    if (formData[option.dataset.field] === option.dataset.value) option.classList.add('selected');
+    const field = option.dataset.field;
+    const value = option.dataset.value;
+    if (Array.isArray(formData[field])) {
+      // Multi-select: check if value is in the array
+      if (formData[field].includes(value)) option.classList.add('selected');
+    } else {
+      if (formData[field] === value) option.classList.add('selected');
+    }
   });
 }
 
@@ -130,9 +148,9 @@ function updateNextBtn() {
   let valid = false;
   switch (currentStep) {
     case 0: valid = formData.name.trim() !== '' && formData.email.trim() !== ''; break;
-    case 1: valid = formData.roomType !== '' && formData.projectType !== ''; break;
-    case 2: valid = formData.cabinetStyle !== ''; break;
-    case 3: valid = formData.budget !== '' && formData.timeline !== ''; break;
+    case 1: valid = formData.roomTypes.length > 0; break;
+    case 2: valid = formData.budget !== ''; break;
+    case 3: valid = formData.timeline !== ''; break;
     default: valid = true;
   }
   nextBtn.disabled = !valid;
@@ -159,3 +177,4 @@ function handleSubmit() {
     stepIndicator.textContent = 'Submitted Successfully';
   }, 1500);
 }
+

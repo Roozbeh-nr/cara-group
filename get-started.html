@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scrollbar-width: none; -ms-overflow-style: none;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Get started with Cara Cabinets — Tell us about your project and we'll design your dream kitchen." />
   <title>Get Started — CARA</title>
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <style>
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+    html, body { scrollbar-width: none; }
+  </style>
 </head>
-<body>
+<body class="gs-body">
 
   <!-- Header -->
   <header class="site-header scrolled" id="site-header">
@@ -19,9 +23,15 @@
         <span class="header-brand">Cara Group</span>
       </div>
       <nav class="header-nav" id="main-nav">
-        <a href="/shop.html">Shop</a>
-        <a href="/finishes.html">Finishes</a>
-        <a href="#">Support</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-dropdown-trigger">Shop <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav-dropdown-menu">
+            <a href="/shop.html">Cabinet Boxes</a>
+            <a href="/finishes.html">Cabinetry Finishes</a>
+          </div>
+        </div>
+        <a href="/concerns.html">Concerns</a>
+        <a href="#">Customers</a>
         <a href="/#inspiration">Inspiration</a>
       </nav>
       <div class="header-actions">
@@ -40,6 +50,7 @@
 
   <!-- Get Started Page -->
   <main class="gs-page">
+
     <!-- Left: Image / branding side -->
     <div class="gs-page-left">
       <div class="gs-page-left-content">
@@ -48,6 +59,14 @@
           <span class="gs-page-eyebrow">Start Your Project</span>
           <h1 class="gs-page-headline">Let's Build<br/>Something<br/>Beautiful</h1>
           <p class="gs-page-tagline">Premium Canadian renovations, designed around your vision. Tell us about your project and we'll bring it to life.</p>
+          <!-- Call Us Now Button -->
+          <div class="gs-call-section">
+            <span class="gs-call-divider-text">or</span>
+            <a href="tel:4164142047" class="gs-call-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Call Us Now — (416) 414-2047</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -73,9 +92,9 @@
             <div class="gs-progress">
               <div class="gs-dots">
                 <div class="gs-dot active" data-step="0"><span class="gs-dot-label">Contact</span></div>
-                <div class="gs-dot" data-step="1"><span class="gs-dot-label">Project</span></div>
-                <div class="gs-dot" data-step="2"><span class="gs-dot-label">Style</span></div>
-                <div class="gs-dot" data-step="3"><span class="gs-dot-label">Budget</span></div>
+                <div class="gs-dot" data-step="1"><span class="gs-dot-label">Rooms</span></div>
+                <div class="gs-dot" data-step="2"><span class="gs-dot-label">Budget</span></div>
+                <div class="gs-dot" data-step="3"><span class="gs-dot-label">Timeline</span></div>
                 <div class="gs-dot" data-step="4"><span class="gs-dot-label">Details</span></div>
               </div>
               <div class="gs-progress-bar">
@@ -105,56 +124,31 @@
                 </div>
               </div>
 
-              <!-- Step 2: Project Type -->
+              <!-- Step 2: Rooms (multi-select) -->
               <div class="gs-step-panel" data-step="1">
-                <h3 class="gs-title">Your Project</h3>
-                <p class="gs-subtitle">What type of project are you planning?</p>
+                <h3 class="gs-title">Which rooms are you renovating?</h3>
+                <p class="gs-subtitle">Select all that apply <span class="gs-required">*</span></p>
                 <div class="gs-fields">
-                  <label class="gs-label">Which room? <span class="gs-required">*</span></label>
-                  <div class="gs-option-group">
-                    <div class="gs-option" data-field="roomType" data-value="kitchen"><span class="gs-radio"></span><span>Kitchen</span></div>
-                    <div class="gs-option" data-field="roomType" data-value="bathroom"><span class="gs-radio"></span><span>Bathroom</span></div>
-                    <div class="gs-option" data-field="roomType" data-value="laundry"><span class="gs-radio"></span><span>Laundry Room</span></div>
-                    <div class="gs-option" data-field="roomType" data-value="closet"><span class="gs-radio"></span><span>Closet / Storage</span></div>
-                    <div class="gs-option" data-field="roomType" data-value="other"><span class="gs-radio"></span><span>Other</span></div>
-                  </div>
-                  <label class="gs-label" style="margin-top:1.5rem;">Is this a… <span class="gs-required">*</span></label>
-                  <div class="gs-option-group">
-                    <div class="gs-option" data-field="projectType" data-value="new-build"><span class="gs-radio"></span><span>New Build</span></div>
-                    <div class="gs-option" data-field="projectType" data-value="renovation"><span class="gs-radio"></span><span>Renovation</span></div>
-                    <div class="gs-option" data-field="projectType" data-value="replacement"><span class="gs-radio"></span><span>Cabinet Replacement Only</span></div>
+                  <div class="gs-option-group" data-multi="true">
+                    <div class="gs-option" data-field="roomTypes" data-value="kitchen"><span class="gs-checkbox"></span><span>Kitchen</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="bathroom"><span class="gs-checkbox"></span><span>Bathroom</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="laundry"><span class="gs-checkbox"></span><span>Laundry Room</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="closet"><span class="gs-checkbox"></span><span>Closet / Storage</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="bedroom"><span class="gs-checkbox"></span><span>Bedroom</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="living"><span class="gs-checkbox"></span><span>Living Room</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="basement"><span class="gs-checkbox"></span><span>Basement</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="garage"><span class="gs-checkbox"></span><span>Garage</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="office"><span class="gs-checkbox"></span><span>Home Office</span></div>
+                    <div class="gs-option" data-field="roomTypes" data-value="other"><span class="gs-checkbox"></span><span>Other</span></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Step 3: Style & Finish -->
+              <!-- Step 3: Budget -->
               <div class="gs-step-panel" data-step="2">
-                <h3 class="gs-title">Style & Finish Preferences</h3>
-                <p class="gs-subtitle">Tell us about your aesthetic preferences</p>
+                <h3 class="gs-title">What's your budget?</h3>
+                <p class="gs-subtitle">Select your budget range (CAD) <span class="gs-required">*</span></p>
                 <div class="gs-fields">
-                  <label class="gs-label">Cabinet door style <span class="gs-required">*</span></label>
-                  <div class="gs-option-group">
-                    <div class="gs-option" data-field="cabinetStyle" data-value="shaker"><span class="gs-radio"></span><span>Shaker</span></div>
-                    <div class="gs-option" data-field="cabinetStyle" data-value="flat-panel"><span class="gs-radio"></span><span>Flat Panel (Slab)</span></div>
-                    <div class="gs-option" data-field="cabinetStyle" data-value="raised-panel"><span class="gs-radio"></span><span>Raised Panel</span></div>
-                    <div class="gs-option" data-field="cabinetStyle" data-value="not-sure"><span class="gs-radio"></span><span>Not sure yet</span></div>
-                  </div>
-                  <label class="gs-label" style="margin-top:1.5rem;">Finish type</label>
-                  <div class="gs-option-group">
-                    <div class="gs-option" data-field="finishType" data-value="painted"><span class="gs-radio"></span><span>Painted</span></div>
-                    <div class="gs-option" data-field="finishType" data-value="thermofoil"><span class="gs-radio"></span><span>Thermofoil</span></div>
-                    <div class="gs-option" data-field="finishType" data-value="wood-grain"><span class="gs-radio"></span><span>Wood Grain</span></div>
-                    <div class="gs-option" data-field="finishType" data-value="not-sure"><span class="gs-radio"></span><span>Not sure</span></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Step 4: Budget & Timeline -->
-              <div class="gs-step-panel" data-step="3">
-                <h3 class="gs-title">Budget & Timeline</h3>
-                <p class="gs-subtitle">Let's talk about your investment</p>
-                <div class="gs-fields">
-                  <label class="gs-label">Budget range (CAD) <span class="gs-required">*</span></label>
                   <div class="gs-option-group">
                     <div class="gs-option" data-field="budget" data-value="under-5000"><span class="gs-radio"></span><span>Under $5,000</span></div>
                     <div class="gs-option" data-field="budget" data-value="5000-10000"><span class="gs-radio"></span><span>$5,000 – $10,000</span></div>
@@ -162,28 +156,32 @@
                     <div class="gs-option" data-field="budget" data-value="20000-40000"><span class="gs-radio"></span><span>$20,000 – $40,000</span></div>
                     <div class="gs-option" data-field="budget" data-value="over-40000"><span class="gs-radio"></span><span>Over $40,000</span></div>
                   </div>
-                  <label class="gs-label" style="margin-top:1.5rem;">Timeline <span class="gs-required">*</span></label>
+                </div>
+              </div>
+
+              <!-- Step 4: Timeline -->
+              <div class="gs-step-panel" data-step="3">
+                <h3 class="gs-title">When do you want to start?</h3>
+                <p class="gs-subtitle">Select your ideal timeline <span class="gs-required">*</span></p>
+                <div class="gs-fields">
                   <div class="gs-option-group">
                     <div class="gs-option" data-field="timeline" data-value="asap"><span class="gs-radio"></span><span>ASAP</span></div>
                     <div class="gs-option" data-field="timeline" data-value="1-month"><span class="gs-radio"></span><span>Within 1 month</span></div>
                     <div class="gs-option" data-field="timeline" data-value="1-3-months"><span class="gs-radio"></span><span>1–3 months</span></div>
-                    <div class="gs-option" data-field="timeline" data-value="flexible"><span class="gs-radio"></span><span>Flexible</span></div>
+                    <div class="gs-option" data-field="timeline" data-value="3-6-months"><span class="gs-radio"></span><span>3–6 months</span></div>
+                    <div class="gs-option" data-field="timeline" data-value="flexible"><span class="gs-radio"></span><span>Flexible / Not sure</span></div>
                   </div>
                 </div>
               </div>
 
               <!-- Step 5: Additional Details -->
               <div class="gs-step-panel" data-step="4">
-                <h3 class="gs-title">Additional Details</h3>
-                <p class="gs-subtitle">Anything else we should know?</p>
+                <h3 class="gs-title">Anything else?</h3>
+                <p class="gs-subtitle">Tell us more about your vision (optional)</p>
                 <div class="gs-fields">
                   <div class="gs-field">
-                    <label for="gs-measurements">Approximate kitchen size / measurements</label>
-                    <input type="text" id="gs-measurements" data-field="measurements" placeholder="e.g. 10' x 12' L-shaped" />
-                  </div>
-                  <div class="gs-field">
-                    <label for="gs-additional">Any other requirements or notes?</label>
-                    <textarea id="gs-additional" data-field="additionalInfo" placeholder="Tell us about your vision, specific needs, or any questions you have…" rows="4"></textarea>
+                    <label for="gs-additional">Additional notes or requirements</label>
+                    <textarea id="gs-additional" data-field="additionalInfo" placeholder="Tell us about your vision, specific needs, or any questions you have…" rows="6"></textarea>
                   </div>
                 </div>
               </div>
@@ -205,16 +203,18 @@
           </div> <!-- .gs-page-card-inner -->
         </div> <!-- .gs-page-glow-card -->
 
-        <!-- Call Us Now Button -->
-        <div class="gs-call-section">
-          <span class="gs-call-divider-text">or</span>
-          <a href="tel:4164142047" class="gs-call-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span>Call Us Now — (416) 414-2047</span>
-          </a>
-        </div>
       </div> <!-- .gs-page-form-wrapper -->
+    </div> <!-- .gs-page-right -->
+
+    <!-- Concerns CTA — links to dedicated page -->
+    <div class="gs-concerns-cta">
+      <p>Have hesitations about starting a renovation?</p>
+      <a href="/concerns.html" class="gs-concerns-link">
+        <span>Read Our Common Concerns</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
     </div>
+
   </main>
 
   <script type="module" src="/src/get-started-page.js"></script>

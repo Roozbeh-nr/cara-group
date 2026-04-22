@@ -26,9 +26,15 @@
         <span class="header-brand">Cara Group</span>
       </div>
       <nav class="header-nav" id="main-nav">
-        <a href="/shop.html">Shop</a>
-        <a href="/finishes.html">Finishes</a>
-        <a href="#">Support</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-dropdown-trigger">Shop <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav-dropdown-menu">
+            <a href="/shop.html">Cabinet Boxes</a>
+            <a href="/finishes.html">Cabinetry Finishes</a>
+          </div>
+        </div>
+        <a href="/concerns.html">Concerns</a>
+        <a href="#">Customers</a>
         <a href="#inspiration">Inspiration</a>
       </nav>
       <div class="header-actions">
@@ -54,11 +60,13 @@
 
     <div class="slideshow-panels">
       <div class="panel-group panel-group--right">
-        <div class="glass-panel-icon-wrap"><svg class="glass-panel-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
-        <a href="/categories.html" class="glass-panel glass-panel--right" id="glass-panel-right">
-          <h2>Go to Our Online Shop</h2>
-          <span class="glass-panel-btn">Click Here</span>
-        </a>
+        <div class="panel-row">
+          <div class="glass-panel-icon-wrap"><svg class="glass-panel-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          <div class="glass-panel glass-panel--right" id="glass-panel-right">
+            <h2>Go to Our Online Shop</h2>
+          </div>
+        </div>
+        <a href="/categories.html" class="glass-panel-btn">Click Here</a>
       </div>
     </div>
   </section>
@@ -258,9 +266,8 @@
   <!-- Video Showcase -->
   <div class="showcase-scroll" id="showcase-scroll">
     <section class="section video-showcase" id="video-showcase">
-      <video class="showcase-video active" id="showcase-video-a" muted playsinline preload="none">
+      <video class="showcase-video active" id="showcase-video-a" muted playsinline autoplay loop src="/videos/showcase-kitchen.mp4">
       </video>
-      <video class="showcase-video" id="showcase-video-b" muted playsinline></video>
     </section>
   </div>
 
@@ -305,7 +312,7 @@
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Support</h4>
+            <h4>Concerns</h4>
             <ul>
               <li><a href="#">Book a Consultation</a></li>
               <li><a href="#">Visit Studio</a></li>
