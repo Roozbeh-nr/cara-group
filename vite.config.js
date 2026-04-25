@@ -15,6 +15,8 @@ export default defineConfig({
         concerns: resolve(__dirname, 'concerns.html'),
         customers: resolve(__dirname, 'customers.html'),
         inspiration: resolve(__dirname, 'inspiration.html'),
+        doors: resolve(__dirname, 'doors.html'),
+        millenium: resolve(__dirname, 'millenium.html'),
       },
     },
   },

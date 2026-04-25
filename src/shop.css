@@ -406,3 +406,79 @@
     margin: 0 auto;
   }
 }
+
+/* Door placeholder for Millenium catalog */
+.door-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.door-placeholder-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+
+/* Door catalog — portrait aspect cards */
+.doors-grid-portrait {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.door-card-portrait .product-image,
+.door-card-portrait .door-image-portrait {
+  aspect-ratio: auto;
+  height: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+}
+
+.door-card-portrait .door-image-portrait img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+/* Coming soon placeholder */
+.doors-coming-soon {
+  text-align: center;
+  padding: 8rem 2rem;
+}
+
+.doors-coming-soon p {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.doors-coming-soon span {
+  font-family: var(--font-body);
+  color: rgba(255,255,255,0.3);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .doors-grid-portrait {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .doors-grid-portrait {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
