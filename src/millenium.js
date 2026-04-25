@@ -1,6 +1,7 @@
 import './style.css';
 import './shop.css';
-import { milleniumDoors } from './millenium-data.js';
+import { doorCollections } from './millenium-data.js';
+const milleniumDoors = doorCollections.millenium;
 
 // --- Sticky Header ---
 const header = document.getElementById('site-header');
